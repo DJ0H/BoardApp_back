@@ -1,0 +1,48 @@
+server:
+  port: 8080
+  servlet:
+    encoding: 
+      charset: utf-8
+      force: true
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .js
+#    static-path-pattern: /static/**
+  datasource:  
+    url: jdbc:sqlserver:// 10.10.10.100:21;serverName=DESKTOP-QDR03FS;encrypt=true;trustServerCertificate=true
+    # url: jdbc:sqlserver://222.96.157.68:포트번호;serverName=서버 이름;encrypt=true;trustServerCertificate=true
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: gst@1234
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      encoding: utf-8
+      # 테이블 자동생성
+      schema-locations:
+        classpath:db/table.sql
+      # 데이터 자동생성
+      data-locations:
+        classpath:db/data.sql
+  
+  output:
+    ansi:
+      enabled: always
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+
+file:
+  path: ./static/images/
+  
+mybatis:
+  mapper-locations:
+    - classpath:mapper/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
